@@ -1,0 +1,62 @@
+<keymap version="1" name="macOS copy" parent="Mac OS X 10.5+">
+  <action id="ActivateBookmarksToolWindow" />
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="alt f12" />
+    <keyboard-shortcut first-keystroke="meta 2" />
+  </action>
+  <action id="ChangesView.Move" />
+  <action id="CompareTwoFiles" />
+  <action id="Console.TableResult.NavigateForeignAction">
+    <mouse-shortcut keystroke="meta button1" />
+    <mouse-shortcut keystroke="Force touch" />
+    <mouse-shortcut keystroke="button2" />
+  </action>
+  <action id="Console.TableResult.Reload" />
+  <action id="DatabaseView.CopyAction" />
+  <action id="DatabaseView.PropertiesAction" />
+  <action id="Debug">
+    <keyboard-shortcut first-keystroke="ctrl d" />
+    <keyboard-shortcut first-keystroke="meta d" />
+  </action>
+  <action id="Diff.ShowDiff" />
+  <action id="DuplicatesForm.SendToRight" />
+  <action id="EditorDuplicate" />
+  <action id="FileChooser.GotoDesktop" />
+  <action id="FileChooser.GotoProject" />
+  <action id="FocusEditor">
+    <keyboard-shortcut first-keystroke="ctrl meta e" />
+    <keyboard-shortcut first-keystroke="shift meta e" />
+  </action>
+  <action id="Github.PullRequest.Comments.Reload" />
+  <action id="Github.PullRequest.Details.Reload" />
+  <action id="GotoDeclaration">
+    <mouse-shortcut keystroke="meta button1" />
+    <mouse-shortcut keystroke="Force touch" />
+    <mouse-shortcut keystroke="button2" />
+  </action>
+  <action id="ImplementMethods">
+    <keyboard-shortcut first-keystroke="meta i" />
+  </action>
+  <action id="QuickJavaDoc">
+    <keyboard-shortcut first-keystroke="ctrl meta j" />
+  </action>
+  <action id="RecentLocations" />
+  <action id="Refresh" />
+  <action id="Replace" />
+  <action id="Rerun" />
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="ctrl r" />
+    <keyboard-shortcut first-keystroke="meta r" />
+  </action>
+  <action id="RunDashboard.CopyConfiguration" />
+  <action id="SendEOF" />
+  <action id="Terminal.SwitchFocusToEditor" />
+  <action id="ToggleLineBreakpoint">
+    <keyboard-shortcut first-keystroke="meta b" />
+  </action>
+  <action id="UsageFiltering.Imports" />
+  <action id="Vcs.Log.Refresh" />
+  <action id="XDebugger.CopyWatch" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleItalicAction" />
+</keymap>

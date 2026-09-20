@@ -1,0 +1,12 @@
+<application>
+  <component name="BlockTerminalUsage">
+    <option name="feedbackNotificationShown" value="true" />
+    <shellToExecutedCommandsNumber>
+      <entry key="zsh" value="4" />
+    </shellToExecutedCommandsNumber>
+  </component>
+  <component name="ReworkedTerminalUsage"><![CDATA[{}]]></component>
+  <component name="TerminalOptionsProvider">
+    <option name="myShellIntegration" value="false" />
+  </component>
+</application>

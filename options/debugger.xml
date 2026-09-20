@@ -1,0 +1,16 @@
+<application>
+  <component name="XDebuggerSettings">
+    <data-views />
+    <general>
+      <evaluation-dialog-mode>CODE_FRAGMENT</evaluation-dialog-mode>
+      <run-to-cursor-gesture>false</run-to-cursor-gesture>
+    </general>
+    <debuggers>
+      <debugger id="javascript">
+        <configuration watchReturnValues="true">
+          <custom-object-presentation />
+        </configuration>
+      </debugger>
+    </debuggers>
+  </component>
+</application>

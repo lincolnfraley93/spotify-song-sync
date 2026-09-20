@@ -1,0 +1,31 @@
+<application>
+  <component name="SettingsSyncSettings">
+    <option name="disabledSubcategories">
+      <map>
+        <entry key="PLUGINS">
+          <value>
+            <list>
+              <option value="CodeWarsPlugin" />
+              <option value="PythonCore" />
+              <option value="com.github.dinbtechit.jetbrainsnestjs" />
+              <option value="com.markskelton.one-dark-theme" />
+              <option value="com.nekofar.milad.intellij.nestjs" />
+              <option value="intellij.haskell" />
+              <option value="live.angular.switch.extension" />
+              <option value="name.kropp.intellij.makefile" />
+              <option value="org.antlr.intellij.plugin" />
+              <option value="org.example.angular-combined-view-plugin" />
+              <option value="org.intellij.plugins.hcl" />
+              <option value="org.intellij.scala" />
+              <option value="org.jetbrains.kotlin" />
+              <option value="org.toml.lang" />
+              <option value="patrick.kelleter.angular-cli-quick-switch" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="migrationFromOldStorageChecked" value="true" />
+    <option name="syncEnabled" value="true" />
+  </component>
+</application>

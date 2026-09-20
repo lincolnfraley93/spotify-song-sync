@@ -1,0 +1,324 @@
+{
+    "plugins": {
+        "AngularJS": {
+            "enabled": false,
+            "dependencies": [
+                "JavaScript",
+                "com.intellij.modules.platform",
+                "HtmlTools",
+                "intellij.webpack"
+            ]
+        },
+        "CodeWarsPlugin": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.platform"
+            ]
+        },
+        "IdeaVIM": {
+            "dependencies": [
+                "com.intellij.modules.platform"
+            ]
+        },
+        "Karma": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.lang",
+                "com.intellij.modules.javascript"
+            ]
+        },
+        "com.android.tools.design": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.platform.images",
+                "org.jetbrains.android",
+                "org.jetbrains.kotlin"
+            ]
+        },
+        "com.dmarcotte.handlebars": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.lang"
+            ]
+        },
+        "com.github.deeepamin.gitlabciaid": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.platform",
+                "org.jetbrains.plugins.yaml",
+                "com.intellij.modules.json",
+                "org.jetbrains.plugins.terminal"
+            ]
+        },
+        "com.haskforce": {
+            "enabled": false
+        },
+        "com.intellij.c.performanceTesting": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.jetbrains.performancePlugin",
+                "com.intellij.cidr.lang",
+                "com.intellij.modules.cidr.ide"
+            ]
+        },
+        "com.intellij.cidr.grazie": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.intellij.cidr.lang",
+                "com.intellij.modules.cidr.ide"
+            ]
+        },
+        "com.intellij.cidr.lang": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.cidr.base",
+                "com.intellij.modules.cidr.ide"
+            ]
+        },
+        "com.intellij.cidr.lang.clangdBridge": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.cidr.lang",
+                "com.intellij.cidr.lang.clangd",
+                "com.intellij.modules.cidr.ide"
+            ]
+        },
+        "com.intellij.cidr.markdown": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.intellij.modules.cidr.lang",
+                "org.intellij.plugins.markdown",
+                "com.intellij.modules.cidr.ide"
+            ]
+        },
+        "com.intellij.database": {
+            "dependencies": [
+                "intellij.grid.core.impl"
+            ]
+        },
+        "com.intellij.kubernetes": {
+            "enabled": false
+        },
+        "com.intellij.lang.jsgraphql": {},
+        "com.intellij.plugins.webcomponents": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.xml",
+                "JavaScript"
+            ]
+        },
+        "com.intellij.searcheverywhere.ml": {
+            "enabled": false
+        },
+        "com.intellij.tailwindcss": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.ultimate",
+                "com.intellij.css",
+                "JavaScript"
+            ]
+        },
+        "com.jetbrains.clion.plugins.webDeployment": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.intellij.modules.lang",
+                "com.intellij.modules.clion.ide",
+                "com.jetbrains.plugins.webDeployment",
+                "com.intellij.modules.clion"
+            ]
+        },
+        "com.jetbrains.codeWithMe": {
+            "enabled": false
+        },
+        "com.jetbrains.lang.ejs": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.lang",
+                "JavaScript"
+            ]
+        },
+        "com.jetbrains.performancePlugin.kotlin": {
+            "enabled": false
+        },
+        "com.jetbrains.performancePlugin.workspaceModel": {
+            "enabled": false,
+            "dependencies": [
+                "com.jetbrains.performancePlugin",
+                "com.jetbrains.performancePlugin.java",
+                "com.jetbrains.performancePlugin.kotlin",
+                "com.intellij.javaee.app.servers.integration",
+                "com.intellij.modules.lang",
+                "org.jetbrains.idea.maven",
+                "com.intellij.modules.gradle.java"
+            ]
+        },
+        "com.jetbrains.plugins.jade": {
+            "enabled": false
+        },
+        "com.microsoft.tooling.msservices.intellij.azure": {
+            "enabled": false,
+            "dependencies": [
+                "org.jetbrains.plugins.terminal",
+                "com.intellij.modules.java",
+                "org.jetbrains.idea.maven",
+                "com.intellij.gradle",
+                "org.jetbrains.plugins.gradle",
+                "org.intellij.plugins.markdown"
+            ]
+        },
+        "cucumber-groovy": {
+            "enabled": false,
+            "dependencies": [
+                "gherkin",
+                "org.intellij.groovy",
+                "cucumber-java"
+            ]
+        },
+        "cucumber-java": {
+            "enabled": false,
+            "dependencies": [
+                "gherkin",
+                "JUnit",
+                "com.intellij.modules.java"
+            ]
+        },
+        "cucumber-javascript": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.ultimate",
+                "gherkin",
+                "com.intellij.modules.javascript"
+            ]
+        },
+        "gherkin": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.xml",
+                "org.intellij.intelliLang"
+            ]
+        },
+        "intellij.haskell": {
+            "dependencies": [
+                "com.intellij.modules.java"
+            ]
+        },
+        "intellij.ktor": {
+            "enabled": false
+        },
+        "io.kanro.idea.plugin.protobuf": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.platform",
+                "com.intellij.modules.lang",
+                "com.intellij.modules.json"
+            ]
+        },
+        "lermitage.intellij.extra.icons": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.platform",
+                "com.intellij.modules.lang",
+                "com.intellij.modules.vcs"
+            ]
+        },
+        "live.angular.switch.extension": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.intellij.modules.platform"
+            ]
+        },
+        "org.example.angular-combined-view-plugin": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.intellij.modules.platform",
+                "JavaScript",
+                "org.jetbrains.plugins.sass"
+            ]
+        },
+        "org.intellij.qodana": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.lang"
+            ]
+        },
+        "org.intellij.scala": {
+            "dependencies": [
+                "com.intellij.modules.java"
+            ]
+        },
+        "org.jetbrains.android": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.platform.images",
+                "com.intellij.modules.java",
+                "org.intellij.intelliLang",
+                "JUnit",
+                "com.intellij.properties",
+                "com.intellij.gradle",
+                "org.jetbrains.plugins.gradle",
+                "org.intellij.groovy",
+                "com.android.tools.idea.smali",
+                "org.jetbrains.kotlin",
+                "org.toml.lang",
+                "org.jetbrains.idea.gradle.dsl",
+                "intellij.webp"
+            ]
+        },
+        "org.jetbrains.kotlin": {
+            "enabled": false
+        },
+        "org.jetbrains.plugins.cidr-intelliLang": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.cidr.lang",
+                "org.intellij.intelliLang",
+                "com.intellij.modules.cidr.ide"
+            ]
+        },
+        "org.jetbrains.plugins.github": {
+            "enabled": false
+        },
+        "org.jetbrains.plugins.gitlab": {},
+        "org.jetbrains.plugins.vagrant": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.ultimate"
+            ]
+        },
+        "org.jetbrains.plugins.vue": {
+            "enabled": false
+        },
+        "patrick.kelleter.angular-cli-quick-switch": {
+            "enabled": false,
+            "category": "UI",
+            "dependencies": [
+                "com.intellij.modules.lang"
+            ]
+        },
+        "pro.bashsupport": {
+            "enabled": false,
+            "dependencies": [
+                "com.intellij.modules.platform",
+                "com.intellij.modules.lang",
+                "com.intellij.modules.xdebugger"
+            ]
+        },
+        "ru.adelf.idea.dotenv": {
+            "dependencies": [
+                "com.intellij.modules.platform"
+            ]
+        },
+        "tanvd.grazi": {
+            "enabled": false
+        },
+        "training": {
+            "enabled": false
+        }
+    }
+}

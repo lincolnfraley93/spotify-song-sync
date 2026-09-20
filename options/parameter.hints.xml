@@ -1,0 +1,13 @@
+<application>
+  <component name="ParameterNameHintsSettings">
+    <blacklists>
+      <blacklist language="Rust">
+        <added pattern="core::str::split(self,pat)" />
+      </blacklist>
+    </blacklists>
+    <option id="js.param.hints.show.names.for.tagged" value="false" />
+    <disabledLanguages>
+      <language id="TypeScript" />
+    </disabledLanguages>
+  </component>
+</application>

@@ -1,0 +1,43 @@
+<keymap version="1" name="Default for macOS copy" parent="Mac OS X 10.5+">
+  <action id="CompareTwoFiles" />
+  <action id="Console.TableResult.Reload" />
+  <action id="Debug">
+    <keyboard-shortcut first-keystroke="ctrl d" />
+    <keyboard-shortcut first-keystroke="meta d" />
+  </action>
+  <action id="Diff.ShowDiff" />
+  <action id="EditorDuplicate" />
+  <action id="FileChooser.GotoDesktop" />
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="alt f7" />
+    <keyboard-shortcut first-keystroke="alt f" />
+  </action>
+  <action id="Github.PullRequest.Comments.Reload" />
+  <action id="Github.PullRequest.Details.Reload" />
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="meta alt b" />
+  </action>
+  <action id="GuiDesigner.Duplicate" />
+  <action id="QuickJavaDoc">
+    <keyboard-shortcut first-keystroke="f1" />
+    <keyboard-shortcut first-keystroke="ctrl j" />
+    <mouse-shortcut keystroke="control button2" />
+    <mouse-shortcut keystroke="meta alt button1" />
+  </action>
+  <action id="Refresh" />
+  <action id="Replace" />
+  <action id="Rerun" />
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="meta r" />
+  </action>
+  <action id="RunDashboard.CopyConfiguration" />
+  <action id="Scala.ShowImplicits">
+    <keyboard-shortcut first-keystroke="shift ctrl alt equals" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt add" />
+  </action>
+  <action id="SendEOF" />
+  <action id="Svn.RefreshWorkingCopies" />
+  <action id="Vcs.Log.Refresh" />
+  <action id="XDebugger.CopyWatch" />
+  <action id="openAssertEqualsDiff" />
+</keymap>

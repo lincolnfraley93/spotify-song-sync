@@ -1,0 +1,162 @@
+<keymap version="1" name="Default copy" parent="Mac OS X 10.5+">
+  <action id="$LRU">
+    <keyboard-shortcut first-keystroke="ctrl meta o" />
+  </action>
+  <action id="ActivateBookmarksToolWindow" />
+  <action id="ActivateDatabaseToolWindow">
+    <keyboard-shortcut first-keystroke="meta 3" />
+  </action>
+  <action id="ActivateFavoritesToolWindow" />
+  <action id="ActivateFindToolWindow" />
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="alt f12" />
+    <keyboard-shortcut first-keystroke="ctrl meta l" />
+    <keyboard-shortcut first-keystroke="meta 2" />
+  </action>
+  <action id="Arrangement.Alias.Rule.Add">
+    <keyboard-shortcut first-keystroke="meta n" />
+  </action>
+  <action id="Arrangement.Rule.Add">
+    <keyboard-shortcut first-keystroke="meta n" />
+  </action>
+  <action id="CallHierarchy" />
+  <action id="ChangesView.Diff" />
+  <action id="Compare.SameVersion" />
+  <action id="CompareTwoFiles" />
+  <action id="Console.Execute.Multiline">
+    <keyboard-shortcut first-keystroke="ctrl enter" />
+  </action>
+  <action id="Console.TableResult.CopyAggregatorResult" />
+  <action id="CopyAbsolutePath" />
+  <action id="CopyPaths" />
+  <action id="Coverage">
+    <keyboard-shortcut first-keystroke="ctrl meta c" />
+  </action>
+  <action id="DatabaseView.CopyDdlAction">
+    <keyboard-shortcut first-keystroke="shift meta alt g" />
+  </action>
+  <action id="Debug">
+    <keyboard-shortcut first-keystroke="ctrl d" />
+    <keyboard-shortcut first-keystroke="meta d" />
+    <keyboard-shortcut first-keystroke="ctrl meta d" />
+  </action>
+  <action id="Diff.ShowDiff" />
+  <action id="DuplicatesForm.SendToRight" />
+  <action id="Editor LRU">
+    <keyboard-shortcut first-keystroke="ctrl meta o" />
+  </action>
+  <action id="EditorAddOrRemoveCaret" />
+  <action id="EditorDuplicate" />
+  <action id="EditorEscape">
+    <keyboard-shortcut first-keystroke="shift escape" />
+    <keyboard-shortcut first-keystroke="escape" />
+  </action>
+  <action id="FileChooser.GotoDesktop" />
+  <action id="FileChooser.GotoModule" />
+  <action id="FileChooser.GotoProject" />
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="shift ctrl f" />
+  </action>
+  <action id="FocusEditor" />
+  <action id="Generate">
+    <keyboard-shortcut first-keystroke="meta n" />
+  </action>
+  <action id="Generate.Missing.Members.ES6" />
+  <action id="Generate.Missing.Members.TypeScript" />
+  <action id="Git.Stage.Refresh" />
+  <action id="Github.PullRequest.Comments.Reload" />
+  <action id="Github.PullRequest.Details.Reload" />
+  <action id="GotoDeclaration">
+    <mouse-shortcut keystroke="meta button1" />
+    <mouse-shortcut keystroke="Force touch" />
+    <mouse-shortcut keystroke="button2" />
+  </action>
+  <action id="HideActiveWindow" />
+  <action id="Images.ShowThumbnails">
+    <keyboard-shortcut first-keystroke="shift meta alt t" />
+  </action>
+  <action id="ImplementMethods" />
+  <action id="Jdbc.OpenConsole.New">
+    <keyboard-shortcut first-keystroke="shift meta c" />
+  </action>
+  <action id="Jdbc.OpenConsole.New.Generate" />
+  <action id="MoveTabRight">
+    <keyboard-shortcut first-keystroke="ctrl alt close_bracket" />
+  </action>
+  <action id="NewElement">
+    <keyboard-shortcut first-keystroke="meta n" />
+  </action>
+  <action id="NewFile">
+    <keyboard-shortcut first-keystroke="shift meta n" />
+  </action>
+  <action id="NewScratchFile" />
+  <action id="OpenInRightSplit">
+    <keyboard-shortcut first-keystroke="shift enter" />
+    <mouse-shortcut keystroke="alt button1 doubleClick" />
+    <keyboard-shortcut first-keystroke="shift alt close_bracket" />
+  </action>
+  <action id="QuickJavaDoc">
+    <keyboard-shortcut first-keystroke="f1" />
+    <keyboard-shortcut first-keystroke="ctrl j" />
+    <mouse-shortcut keystroke="control button2" />
+    <keyboard-shortcut first-keystroke="shift ctrl meta d" />
+  </action>
+  <action id="Refactorings.QuickListPopupAction">
+    <keyboard-shortcut first-keystroke="ctrl meta r" />
+  </action>
+  <action id="ReformatCode">
+    <keyboard-shortcut first-keystroke="meta alt l" />
+    <keyboard-shortcut first-keystroke="ctrl i" />
+  </action>
+  <action id="Refresh" />
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="shift ctrl r" />
+  </action>
+  <action id="Replace" />
+  <action id="ReplaceInPath" />
+  <action id="Rerun" />
+  <action id="RerunTests">
+    <keyboard-shortcut first-keystroke="shift alt r" />
+  </action>
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="meta r" />
+  </action>
+  <action id="RunClass" />
+  <action id="RunDashboard.CopyConfiguration" />
+  <action id="RunDashboard.Run" />
+  <action id="Scala.ShowImplicits">
+    <keyboard-shortcut first-keystroke="shift ctrl alt equals" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt add" />
+  </action>
+  <action id="SendEOF" />
+  <action id="ServiceView.AddService">
+    <keyboard-shortcut first-keystroke="meta n" />
+  </action>
+  <action id="ServiceView.GroupByContributor" />
+  <action id="ShowHoverInfo">
+    <keyboard-shortcut first-keystroke="ctrl alt h" />
+  </action>
+  <action id="Svn.RefreshWorkingCopies" />
+  <action id="Terminal.MoveToEditor">
+    <keyboard-shortcut first-keystroke="ctrl meta h" />
+  </action>
+  <action id="Terminal.SwitchFocusToEditor" />
+  <action id="ToggleLineBreakpoint">
+    <keyboard-shortcut first-keystroke="meta f8" />
+    <keyboard-shortcut first-keystroke="meta b" />
+  </action>
+  <action id="Uml.NewElement">
+    <keyboard-shortcut first-keystroke="meta n" />
+  </action>
+  <action id="UsageFiltering.ReadAccess" />
+  <action id="UsageGrouping.UsageType" />
+  <action id="Vcs.Log.Refresh" />
+  <action id="WelcomeScreen.CopyProjectPath" />
+  <action id="XDebugger.CopyWatch" />
+  <action id="editRunConfigurations">
+    <keyboard-shortcut first-keystroke="ctrl meta e" />
+  </action>
+  <action id="openAssertEqualsDiff" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction" />
+  <action id="runShellFileAction" />
+</keymap>

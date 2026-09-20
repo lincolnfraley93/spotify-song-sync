@@ -1,0 +1,74 @@
+<code_scheme name="Default" version="173">
+  <HTMLCodeStyleSettings>
+    <option name="HTML_KEEP_WHITESPACES_INSIDE" value="pre,textarea" />
+  </HTMLCodeStyleSettings>
+  <JSCodeStyleSettings version="0">
+    <option name="USE_DOUBLE_QUOTES" value="false" />
+    <option name="JSX_ATTRIBUTE_VALUE" value="Based on type" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="USE_CHAINED_CALLS_GROUP_INDENTS" value="true" />
+  </JSCodeStyleSettings>
+  <RiderCodeStyleSettings>
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/NAMESPACE_DECLARATION_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/EXPORT_DECLARATION_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/TYPE_DECLARATION_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INVOCABLE_DECLARATION_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ANONYMOUS_METHOD_DECLARATION_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/REQUIRES_EXPRESSION_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+    <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/OTHER_BRACES/@EntryValue" value="END_OF_LINE" type="string" />
+  </RiderCodeStyleSettings>
+  <codeStyleSettings language="CSS">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="HTML">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="JSON">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="4" />
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="JavaScript">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+      <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="LESS">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="4" />
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="Markdown">
+    <option name="RIGHT_MARGIN" value="1000" />
+  </codeStyleSettings>
+  <codeStyleSettings language="Rust">
+    <option name="RIGHT_MARGIN" value="74" />
+  </codeStyleSettings>
+  <codeStyleSettings language="SASS">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="4" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="SCSS">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="4" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="TypeScript">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+      <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+</code_scheme>

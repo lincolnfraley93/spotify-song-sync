@@ -1,0 +1,85 @@
+<application>
+  <component name="CodeFoldingSettings">
+    <option name="COLLAPSE_IMPORTS" value="false" />
+    <option name="COLLAPSE_FILE_HEADER" value="false" />
+  </component>
+  <component name="CodeVisionSettings">
+    <option name="codeVisionGroupToPosition">
+      <map>
+        <entry key="inheritors" value="Default" />
+        <entry key="references" value="Default" />
+        <entry key="vcs.code.vision" value="Default" />
+      </map>
+    </option>
+    <option name="defaultPosition" value="Right" />
+    <option name="disabledCodeVisionProviderIds">
+      <set>
+        <option value="inheritors" />
+        <option value="references" />
+        <option value="vcs.code.vision" />
+      </set>
+    </option>
+  </component>
+  <component name="DeclarativeInlayHintsSettings">
+    <option name="enabledOptions">
+      <map>
+        <entry key="js.type.hints#function.returns" value="false" />
+        <entry key="js.type.hints#non.paren.single.param" value="false" />
+        <entry key="js.type.hints#parameters.in.parens" value="false" />
+        <entry key="js.type.hints#variables.and.fields" value="false" />
+        <entry key="sql.column.names.inlay.hints#sql.show.column.names.for.asterisk" value="false" />
+        <entry key="sql.column.names.inlay.hints#sql.show.column.names.for.set.operations" value="false" />
+        <entry key="sql.column.names.inlay.hints#sql.show.column.names.in.insert.values" value="false" />
+        <entry key="sql.column.names.inlay.hints#sql.show.column.names.in.select" value="false" />
+        <entry key="sql.join.cardinality.hints#full.join" value="false" />
+        <entry key="sql.join.cardinality.hints#inner.join" value="false" />
+        <entry key="sql.join.cardinality.hints#left.join" value="false" />
+        <entry key="sql.join.cardinality.hints#right.join" value="false" />
+        <entry key="ts.type.hints#function.returns" value="false" />
+        <entry key="ts.type.hints#non.paren.single.param" value="false" />
+        <entry key="ts.type.hints#parameters.in.parens" value="false" />
+        <entry key="ts.type.hints#variables.and.fields" value="false" />
+      </map>
+    </option>
+    <option name="providerIdToEnabled">
+      <map>
+        <entry key="js.chain.hints" value="true" />
+        <entry key="js.type.hints" value="false" />
+        <entry key="sql.column.names.inlay.hints" value="false" />
+        <entry key="sql.join.cardinality.hints" value="false" />
+        <entry key="ts.chain.hints" value="true" />
+        <entry key="ts.enum.hints" value="true" />
+        <entry key="ts.type.hints" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="EditorSettings">
+    <option name="SHOW_STICKY_LINES" value="false" />
+    <option name="ADDITIONAL_PAGE_AT_BOTTOM" value="true" />
+    <option name="IS_WHEEL_FONTCHANGE_ENABLED" value="true" />
+    <option name="IS_WHEEL_FONTCHANGE_PERSISTENT" value="true" />
+  </component>
+  <component name="InlayHintsSettings">
+    <option name="disabledHintProviderIds">
+      <set>
+        <option value="Rust.chain-method.hints" />
+        <option value="Rust.rust.type.hints" />
+        <option value="TypeScript.ts.chain.hints" />
+        <option value="TypeScript.ts.enum.hints" />
+        <option value="TypeScript.ts.type.hints" />
+        <option value="go.go.inlays.display.constant.definition" />
+      </set>
+    </option>
+    <option name="lastViewedProviderKeyId" value="go.go.inlays.display.constant.definition" />
+    <settingsMapElement>
+      <TypeScript.ts.type.hints>
+        <Settings>
+          <option name="showForInferredParameters" value="false" />
+        </Settings>
+      </TypeScript.ts.type.hints>
+    </settingsMapElement>
+  </component>
+  <component name="InlineCompletionOnboarding">
+    <option name="onboardingFinished" value="true" />
+  </component>
+</application>

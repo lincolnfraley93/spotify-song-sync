@@ -1,0 +1,10 @@
+<application>
+  <component name="UISettings">
+    <option name="EDITOR_TAB_LIMIT" value="8" />
+    <option name="FULL_PATHS_IN_TITLE_BAR" value="true" />
+    <option name="MAX_LOOKUP_WIDTH2" value="1000" />
+    <option name="NAVIGATION_BAR_LOCATION" value="TOP" />
+    <option name="SHOW_STATUS_BAR" value="false" />
+    <option name="UI_DENSITY" value="COMPACT" />
+  </component>
+</application>

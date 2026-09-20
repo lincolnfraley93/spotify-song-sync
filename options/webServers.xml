@@ -1,0 +1,18 @@
+<application>
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4f5b7416-70dd-4f80-8d1a-dab87d0d3c22" name="mininet@172.16.77.128:22" url="http:///">
+        <fileTransfer accessType="SFTP" sshConfigId="e1a8f18c-c315-4331-8bfe-4392a7482c31" sshConfig="mininet@172.16.77.128:22 password" />
+      </webServer>
+      <webServer id="ac89992a-7b85-480f-b05b-f609a6fb3b09" name="mininet@172.16.77.128:22 password">
+        <fileTransfer accessType="SFTP" sshConfigId="e1a8f18c-c315-4331-8bfe-4392a7482c31" sshConfig="mininet@172.16.77.128:22 password" />
+      </webServer>
+      <webServer id="0ca6d931-8579-4099-9400-40cee2c3526d" name="mininet@172.16.77.128:22 password">
+        <fileTransfer accessType="SFTP" sshConfigId="e1a8f18c-c315-4331-8bfe-4392a7482c31" sshConfig="mininet@172.16.77.128:22 password" />
+      </webServer>
+      <webServer id="a76fe2fd-d779-4429-9c2a-d0c71b23fa6a" name="mininet@172.16.77.128:22 password">
+        <fileTransfer accessType="SFTP" sshConfigId="e1a8f18c-c315-4331-8bfe-4392a7482c31" sshConfig="mininet@172.16.77.128:22 password" />
+      </webServer>
+    </option>
+  </component>
+</application>

@@ -1,0 +1,14 @@
+<application>
+  <component name="Go">
+    <option name="askConfirmationForShareInPlayground" value="false" />
+  </component>
+  <component name="GoFoldingSettings">
+    <option name="isOneLineReturns" value="false" />
+    <option name="isOneLinePanics" value="false" />
+    <option name="isOneLineReturnFunctions" value="false" />
+    <option name="isOneLineErrorHandlingBlocks" value="false" />
+    <option name="isOneLineCaseClauses" value="false" />
+    <option name="isEmptyFunctions" value="false" />
+    <option name="isEmptyStructOrInterfaceTypeDefs" value="false" />
+  </component>
+</application>

@@ -1,0 +1,25 @@
+<scheme name="_@user_Dark" version="142" parent_scheme="Darcula">
+  <option name="FONT_SCALE" value="1.0" />
+  <metaInfo>
+    <property name="created">2023-06-27T13:47:57</property>
+    <property name="ide">WebStorm</property>
+    <property name="ideVersion">2023.1.1.0.0</property>
+    <property name="modified">2023-06-27T13:50:33</property>
+    <property name="originalScheme">Dark</property>
+    <property name="partialSave">true</property>
+  </metaInfo>
+  <option name="LINE_SPACING" value="1.2" />
+  <option name="EDITOR_FONT_SIZE" value="16" />
+  <option name="EDITOR_FONT_NAME" value="Menlo" />
+  <attributes>
+    <option name="ANNOTATION_ATTRIBUTE_NAME_ATTRIBUTES">
+      <value />
+    </option>
+    <option name="RUNTIME_ERROR">
+      <value>
+        <option name="EFFECT_COLOR" value="f2c55c" />
+        <option name="EFFECT_TYPE" value="5" />
+      </value>
+    </option>
+  </attributes>
+</scheme>
