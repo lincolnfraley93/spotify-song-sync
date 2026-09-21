@@ -15,6 +15,10 @@ type spotifyConfig struct {
 }
 
 func loadSpotifyConfig(path string, getenv func(string) string) (spotifyConfig, error) {
+	return loadConfig(path, getenv, true)
+}
+
+func loadConfig(path string, getenv func(string) string, requirePlaylist bool) (spotifyConfig, error) {
 	var config spotifyConfig
 	f, err := os.Open(path)
 	if err != nil && !os.IsNotExist(err) {
@@ -42,6 +46,9 @@ func loadSpotifyConfig(path string, getenv func(string) string) (spotifyConfig, 
 	config.PlaylistID = strings.TrimSpace(config.PlaylistID)
 	if config.ClientID == "" {
 		return config, fmt.Errorf("set client_id in %s or SPOTIFY_CLIENT_ID", path)
+	}
+	if !requirePlaylist {
+		return config, nil
 	}
 	if config.PlaylistID == "" {
 		return config, fmt.Errorf("set playlist_id in %s or SPOTIFY_PLAYLIST_ID", path)

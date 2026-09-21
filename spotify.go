@@ -61,14 +61,8 @@ func spotifyHTTPError(operation string, resp *http.Response) error {
 }
 
 type playlistItem struct {
-	IsLocal bool `json:"is_local"`
-	Item    *struct {
-		Name    string `json:"name"`
-		Type    string `json:"type"`
-		Artists []struct {
-			Name string `json:"name"`
-		} `json:"artists"`
-	} `json:"item"`
+	IsLocal bool         `json:"is_local"`
+	Item    *searchTrack `json:"item"`
 }
 
 func (p playlistItem) display() string {
@@ -98,7 +92,19 @@ func (p playlistItem) display() string {
 }
 
 func fetchPlaylist(ctx context.Context, client *http.Client, base, id, token string) ([]string, error) {
+	entries, err := fetchPlaylistItems(ctx, client, base, id, token)
+	if err != nil {
+		return nil, err
+	}
 	var items []string
+	for _, entry := range entries {
+		items = append(items, entry.display())
+	}
+	return items, nil
+}
+
+func fetchPlaylistItems(ctx context.Context, client *http.Client, base, id, token string) ([]playlistItem, error) {
+	var items []playlistItem
 	for offset := 0; ; {
 		endpoint := fmt.Sprintf("%s/playlists/%s/items?limit=50&offset=%d", base, id, offset)
 		req, err := http.NewRequestWithContext(ctx, http.MethodGet, endpoint, nil)
@@ -124,9 +130,7 @@ func fetchPlaylist(ctx context.Context, client *http.Client, base, id, token str
 		if err != nil {
 			return nil, fmt.Errorf("invalid Spotify playlist response: %w", err)
 		}
-		for _, item := range page.Items {
-			items = append(items, item.display())
-		}
+		items = append(items, page.Items...)
 		if page.Next == nil || *page.Next == "" {
 			return items, nil
 		}
