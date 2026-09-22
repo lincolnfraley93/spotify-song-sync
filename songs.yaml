@@ -1,12 +1,12 @@
 - artist: Trivium
   title: Dying in Your Arms
-- artist: Bullet for My Valentine
-  title: Tears Don’t Fall
+- artist: Bullet For My Valentine
+  title: Tears Don't Fall
 - artist: Megadeth
-  title: Symphony of Destruction
-- artist: Bullet for My Valentine
+  title: Symphony Of Destruction
+- artist: Bullet For My Valentine
   title: Scream Aim Fire
-- artist: Bullet for My Valentine
+- artist: Bullet For My Valentine
   title: Waking the Demon
 - artist: Death
   title: Pull the Plug
@@ -14,8 +14,6 @@
   title: Rain
 - artist: Trivium
   title: Ascendancy
-- artist: Necrophagist
-  title: Foul Body Autopsy
 - artist: Trivium
   title: The Deceived
 - artist: Trivium
@@ -32,8 +30,6 @@
   title: Sacred Serenity
 - artist: Death
   title: Without Judgement
-- artist: Necrophagist
-  title: To Breathe in a Casket
 - artist: Trivium
   title: Pull Harder on the Strings of Your Martyr
 - artist: Trivium
@@ -50,44 +46,36 @@
   title: Misanthrope
 - artist: Death
   title: Perennial Quest
-- artist: Necrophagist
-  title: Advanced Corpse Tumor
 - artist: Death
   title: The Philosopher
 - artist: Death
   title: Voice of the Soul
 - artist: Megadeth
-  title: Holy Wars… The Punishment Due
+  title: Holy Wars...The Punishment Due
 - artist: Megadeth
-  title: Tornado of Souls
-- artist: Children of Bodom
-  title: Kissing the Shadows
+  title: Tornado Of Souls
+- artist: Children Of Bodom
+  title: Kissing The Shadows
 - artist: Trivium
   title: Entrance of the Conflagration
 - artist: Death
   title: Spirit Crusher
 - artist: Death
   title: Story to Tell
-- artist: Archspire
-  title: Lucid Collective Somnambulation
 - artist: Death
   title: Scavenger of Human Sorrow
-- artist: Born of Osiris
-  title: Follow the Signs
+- artist: Born Of Osiris
+  title: Follow The Signs
 - artist: Death
   title: Bite the Pain
 - artist: Death
-  title: To Forgive Is to Suffer
+  title: To Forgive is to Suffer
 - artist: Death
   title: A Moment of Clarity
 - artist: Death
   title: Flesh and the Power It Holds
-- artist: Death
-  title: Painkiller
 - artist: Eric Johnson
-  title: Cliffs of Dover
-- artist: Necrophagist
-  title: Extreme Unction
+  title: Cliffs Of Dover - Instrumental
 - artist: Trivium
   title: A Gunshot to the Head of Trepidation
 - artist: Decapitated
@@ -104,8 +92,6 @@
   title: Fathomless Catacombs
 - artist: Revocation
   title: The Outer Ones
-- artist: Archspire
-  title: Kairos Chamber
 - artist: Revocation
   title: Vanitas
 - artist: Arsis
@@ -118,20 +104,30 @@
   title: A Starless Darkness
 - artist: Revocation
   title: The Grip Tightens
-- artist: Job for a Cowboy
+- artist: Job For A Cowboy
   title: Sun of Nihility
 - artist: Aborted
   title: Cadaverous Banquet
-- artist: Necrophagist
-  title: The Stillborn One
 - artist: Inferi
   title: Simian Hive
 - artist: Necrophagist
+  title: Foul Body Autopsy
+- artist: Necrophagist
+  title: To Breathe In A Casket
+- artist: Necrophagist
   title: Intestinal Incubation
+- artist: Necrophagist
+  title: Advanced Corpse Tumor
+- artist: Archspire
+  title: Lucid Collective Somnambulation
 - artist: Necrophagist
   title: Culinary Hyperversity
 - artist: Archspire
   title: The Plague of Am (Cogito Ergo Sum)
+- artist: Necrophagist
+  title: Extreme Unction
+- artist: Archspire
+  title: Kairos Chamber
 - artist: Spawn of Possession
   title: Lash by Lash
 - artist: The Zenith Passage
@@ -139,41 +135,45 @@
 - artist: Archspire
   title: Scream Feeding
 - artist: Archspire
-  title: Involuntary Doppelgänger
-- artist: Archspire
   title: Join Us Beyond
 - artist: Archspire
   title: Fathom Infinite Depth
 - artist: Necrophagist
-  title: Mutilate the Stillborn
+  title: Mutilate The Stillborn
 - artist: Archspire
   title: Spontaneous Generation
 - artist: Archspire
   title: Seven Crowns and the Oblivion Chain
 - artist: Archspire
+  title: Involuntary Doppelgänger
+- artist: Archspire
   title: Human Murmuration
 - artist: Archspire
   title: Remote Tumour Seeker
-- artist: Necrophagist
-  title: Only Ash Remains
 - artist: The Zenith Passage
   title: Deus Deceptor
+- artist: Necrophagist
+  title: The Stillborn One
+- artist: Archspire
+  title: Bleed the Future
+- artist: Necrophagist
+  title: Only Ash Remains
+- artist: Archspire
+  title: Relentless Mutation
 - artist: Necrophagist
   title: Seven
 - artist: Archspire
   title: The Mimic Well
-- artist: Inferi
+- artist: Inferi;Trevor Strnad
   title: Behold the Bearer of Light
 - artist: Necrophagist
-  title: Diminished to B
+  title: Diminished To B
 - artist: Archspire
   title: Calamus Will Animate
 - artist: Spawn of Possession
   title: Apparition
 - artist: Necrophagist
   title: Epitaph
-- artist: Archspire
-  title: Bleed the Future
 - artist: Archspire
   title: A Dark Horizontal
 - artist: Necrophagist
@@ -185,13 +185,11 @@
 - artist: Archspire
   title: Golden Mouth of Ruin
 - artist: Necrophagist
-  title: Symbiotic in Theory
+  title: Symbiotic In Theory
 - artist: Archspire
   title: Abandon the Linear
 - artist: Necrophagist
   title: Fermented Offal Discharge
-- artist: Archspire
-  title: Relentless Mutation
 - artist: Archspire
   title: Drain of Incarnation
 - artist: Archspire
@@ -199,7 +197,7 @@
 - artist: Archspire
   title: Reverie on the Onyx
 - artist: Archspire
-  title: A.U.M. (Apeiron Universal Migration)
+  title: A.U.M.
 - artist: Archspire
   title: Liminal Cypher
 - artist: Archspire

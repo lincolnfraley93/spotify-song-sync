@@ -111,6 +111,10 @@ func previewSongs(ctx context.Context, client *http.Client, base, token, playlis
 	if err != nil {
 		return nil, err
 	}
+	return resolveAgainstPlaylist(ctx, client, base, token, songs, items, input, prompts)
+}
+
+func resolveAgainstPlaylist(ctx context.Context, client *http.Client, base, token string, songs []Song, items []playlistItem, input io.Reader, prompts io.Writer) ([]resolution, error) {
 	// Start reading input only if a song actually needs a choice.
 	promptCtx, cancel := context.WithCancel(ctx)
 	defer cancel()

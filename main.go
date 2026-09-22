@@ -14,11 +14,14 @@ func main() {
 }
 
 func run(args []string, out io.Writer) error {
+	if len(args) == 2 && args[0] == "plan" {
+		return runSongWorkflow(args[1], out, os.Stderr, true)
+	}
 	if len(args) == 2 && args[0] == "resolve" {
 		return runResolve(args[1], out, os.Stderr)
 	}
 	if len(args) != 1 {
-		return fmt.Errorf("usage: spotify-song-sync <songs.yaml> | spotify | resolve <songs.yaml>")
+		return fmt.Errorf("usage: spotify-song-sync <songs.yaml> | spotify | resolve <songs.yaml> | plan <songs.yaml>")
 	}
 	if args[0] == "spotify" {
 		return runSpotify(out, os.Stderr)

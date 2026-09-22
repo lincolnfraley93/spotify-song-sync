@@ -141,3 +141,39 @@ group from competing candidates. All candidates remain visible; the first track 
 as its representative, without a release-quality preference. Release counts within the first ten search results are not
 independent evidence or proof of the intended recording. Album names are never
 used to decide dominance. Single-track and unanimous-ISRC matches are unchanged.
+
+## Dry-run synchronization plan
+
+```sh
+go run . plan songs.yaml
+```
+
+This command uses the same configuration and interactive resolution flow as
+`resolve`, then prints the operations needed to make the fetched playlist match
+the desired sequence of selected Spotify track IDs. It makes no Spotify playlist
+writes. Resolution and planning share one complete playlist fetch.
+
+Duplicates are separate occurrences. The planner retains the earliest current
+occurrences up to the desired count, removes surplus occurrences from right to
+left, then walks desired positions left to right. It keeps a correct occurrence,
+moves the earliest later occurrence of the needed ID, or adds that ID if absent.
+The final simulated sequence is checked against the desired sequence. Required
+additions/removals are minimal; the number of moves is not necessarily minimal.
+
+Operations are numbered and use 1-based positions in the simulated playlist after
+preceding operations. Removed/moved entries also show original positions.
+Retained entries need no explicit move but can shift through other operations;
+they show original and desired positions. Every entry includes its Spotify ID.
+Different IDs remain different even when they share an ISRC. The summary separates
+retained, added, removed, and moved occurrences.
+
+Unlike `resolve`, an empty song list still fetches the current playlist and plans
+removal of every occurrence. Identical states report that no changes are needed.
+Skipped/unresolved songs block the plan and are listed with a nonzero exit;
+they never silently become removals. Local files, non-track entries, null items,
+and missing track IDs in the current playlist also block planning, identifying
+their position. API failures stop planning without a partial change plan.
+
+This is a preview of the fetched state, which can become stale if the playlist is
+edited elsewhere. No plan or resolution file is saved. Playlist execution and
+write scopes remain out of scope.

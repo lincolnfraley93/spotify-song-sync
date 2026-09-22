@@ -252,6 +252,10 @@ func printResolutions(out io.Writer, results []resolution) error {
 }
 
 func runResolve(path string, out, prompts io.Writer) error {
+	return runSongWorkflow(path, out, prompts, false)
+}
+
+func runSongWorkflow(path string, out, prompts io.Writer, planning bool) error {
 	f, err := os.Open(path)
 	if err != nil {
 		return err
@@ -261,7 +265,7 @@ func runResolve(path string, out, prompts io.Writer) error {
 	if err != nil {
 		return fmt.Errorf("%s: %w", path, err)
 	}
-	if len(songs) == 0 {
+	if len(songs) == 0 && !planning {
 		return printResolutions(out, nil)
 	}
 	config, err := loadSpotifyConfig("spotify.yaml", os.Getenv)
@@ -278,6 +282,9 @@ func runResolve(path string, out, prompts io.Writer) error {
 		return err
 	}
 	cancel()
+	if planning {
+		return planSongs(ctx, client, "https://api.spotify.com/v1", token, config.PlaylistID, songs, os.Stdin, prompts, out)
+	}
 	results, err := previewSongs(ctx, client, "https://api.spotify.com/v1", token, config.PlaylistID, songs, os.Stdin, prompts)
 	if err != nil {
 		return err

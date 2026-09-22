@@ -130,6 +130,9 @@ func fetchPlaylistItems(ctx context.Context, client *http.Client, base, id, toke
 		if err != nil {
 			return nil, fmt.Errorf("invalid Spotify playlist response: %w", err)
 		}
+		if page.Items == nil {
+			return nil, fmt.Errorf("invalid Spotify playlist response: missing items array")
+		}
 		items = append(items, page.Items...)
 		if page.Next == nil || *page.Next == "" {
 			return items, nil
