@@ -218,20 +218,22 @@ func writePlaylistOperation(ctx context.Context, client *http.Client, base, toke
 	return result.Snapshot, nil
 }
 
-func verifySyncState(ctx context.Context, client *http.Client, base, token, id, snapshot string, expected []searchTrack) error {
-	_, items, err := fetchStablePlaylist(ctx, client, base, token, id, snapshot)
+func verifySyncState(ctx context.Context, client *http.Client, base, token, id string, expected []searchTrack) (string, error) {
+	// Verify the actual sequence under a stable read snapshot. The mutation's
+	// response snapshot need not equal the snapshot observed by this read.
+	metadata, items, err := fetchStablePlaylist(ctx, client, base, token, id, "")
 	if err != nil {
-		return err
+		return "", err
 	}
 	if len(items) != len(expected) {
-		return fmt.Errorf("playlist verification failed: item count differs from expected state")
+		return "", fmt.Errorf("playlist verification failed: item count differs from expected state")
 	}
 	for i, item := range items {
 		if item.Item == nil || item.IsLocal || item.Item.IsLocal || item.Item.Type != "track" || item.Item.ID != expected[i].ID {
-			return fmt.Errorf("playlist verification failed: track at position %d differs from expected state", i+1)
+			return "", fmt.Errorf("playlist verification failed: track at position %d differs from expected state", i+1)
 		}
 	}
-	return nil
+	return metadata.Snapshot, nil
 }
 
 func applySyncPlan(ctx context.Context, client *http.Client, base, token, id, snapshot string, prepared preparedPlan, out io.Writer) error {
@@ -260,7 +262,9 @@ func applySyncPlan(ctx context.Context, client *http.Client, base, token, id, sn
 		if err != nil {
 			return stop(i+1, op.Kind, err)
 		}
-		if err := verifySyncState(ctx, client, base, token, id, newSnapshot, next); err != nil {
+		// Adopt the observed snapshot only after the expected sequence is verified.
+		newSnapshot, err = verifySyncState(ctx, client, base, token, id, next)
+		if err != nil {
 			return stop(i+1, "write acknowledged but outcome not verified", err)
 		}
 		counts[op.Kind]++

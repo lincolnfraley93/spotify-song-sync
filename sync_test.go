@@ -30,6 +30,7 @@ type fakePlaylist struct {
 	wrongResult    int
 	loseResponse   int
 	failVerify     bool
+	writeSnapshot  string
 	search         []searchTrack
 }
 
@@ -173,7 +174,11 @@ func (f *fakePlaylist) serve(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, `{}`)
 		return
 	}
-	json.NewEncoder(w).Encode(map[string]string{"snapshot_id": f.snapshot()})
+	snapshot := f.snapshot()
+	if f.writeSnapshot != "" {
+		snapshot = f.writeSnapshot
+	}
+	json.NewEncoder(w).Encode(map[string]string{"snapshot_id": snapshot})
 }
 func startFake(t *testing.T, current string) (*fakePlaylist, *httptest.Server) {
 	t.Helper()
@@ -295,6 +300,44 @@ func TestSyncNoOpAndUnresolved(t *testing.T) {
 		if len(f.writes) != 0 || strings.Contains(prompts.String(), "Type yes") {
 			t.Fatal("unexpected confirmation or writes")
 		}
+	}
+}
+
+func TestSyncAddUsesVerifiedSnapshot(t *testing.T) {
+	for _, scenario := range []string{"success", "external edit", "unstable read", "wrong sequence"} {
+		t.Run(scenario, func(t *testing.T) {
+			f, s := startFake(t, "A")
+			f.writeSnapshot = "write-response"
+			f.metadataHook = func(f *fakePlaylist) {
+				// Reads 2 and 3 bracket the first ADD's verification;
+				// read 4 checks the baseline before the second ADD.
+				if scenario == "external edit" && f.metadataReads == 4 ||
+					scenario == "unstable read" && f.metadataReads == 3 {
+					f.version++
+				}
+			}
+			if scenario == "wrong sequence" {
+				f.wrongResult = 1
+			}
+			var out bytes.Buffer
+			err := applySyncPlan(context.Background(), s.Client(), s.URL, "token", "list", f.snapshot(), preparedFor(t, "A", "ABB"), &out)
+			if scenario == "success" {
+				if err != nil || idsOf(f.tracks) != "ABB" || len(f.writes) != 2 ||
+					!strings.Contains(out.String(), "2 added, 0 removed, 0 moved") {
+					t.Fatalf("err=%v tracks=%s writes=%v output=%s", err, idsOf(f.tracks), f.writes, out.String())
+				}
+				return
+			}
+			want := "playlist verification failed"
+			if scenario == "external edit" {
+				want = "before write): playlist changed: snapshot mismatch"
+			} else if scenario == "unstable read" {
+				want = "playlist changed while reading items"
+			}
+			if err == nil || !strings.Contains(err.Error(), want) || len(f.writes) != 1 {
+				t.Fatalf("err=%v writes=%v", err, f.writes)
+			}
+		})
 	}
 }
 
