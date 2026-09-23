@@ -93,8 +93,10 @@ IDs or metadata cannot supply a playlist choice.
 
 Comparison ignores case, trims/collapses whitespace, maps curly apostrophes to
 straight apostrophes, and maps the ellipsis character to three periods. Other
-punctuation, accents, and version labels remain significant. Artist matching uses
-any credited artist. Original input text is retained for display.
+punctuation, accents, and version labels remain significant. Artist matching accepts a single credited artist or semicolon-separated names
+that must all appear among the credited artists (ignoring order and surrounding
+whitespace). Whole-string artist matches remain supported; commas, ampersands,
+and `feat.` are not split. Original input text is retained for display.
 
 Songs not represented in the playlist use the existing strict search and ISRC
 rules over the first ten candidates. A confident result selects the first track

@@ -47,6 +47,32 @@ func normalized(text string) string {
 }
 func sameText(a, b string) bool { return strings.EqualFold(normalized(a), normalized(b)) }
 
+// artistMatches preserves literal artist names, then treats semicolon-separated
+// names as multiple required credits. Extra Spotify credits are allowed.
+func artistMatches(input string, track searchTrack) bool {
+	credited := func(name string) bool {
+		for _, artist := range track.Artists {
+			if sameText(name, artist.Name) {
+				return true
+			}
+		}
+		return false
+	}
+	if credited(input) {
+		return true
+	}
+	names := strings.Split(input, ";")
+	if len(names) < 2 {
+		return false
+	}
+	for _, name := range names {
+		if strings.TrimSpace(name) == "" || !credited(name) {
+			return false
+		}
+	}
+	return true
+}
+
 var isrcPattern = regexp.MustCompile(`^[A-Z]{2}[A-Z0-9]{3}[0-9]{7}$`)
 
 func normalizedISRC(value string) string {
@@ -109,12 +135,9 @@ func matchSong(song Song, candidates []searchTrack) resolution {
 		if track.ID == "" || seen[track.ID] || !sameText(song.Title, track.Name) {
 			continue
 		}
-		for _, artist := range track.Artists {
-			if sameText(song.Artist, artist.Name) {
-				result.Matches = append(result.Matches, track)
-				seen[track.ID] = true
-				break
-			}
+		if artistMatches(song.Artist, track) {
+			result.Matches = append(result.Matches, track)
+			seen[track.ID] = true
 		}
 	}
 	switch len(result.Matches) {
@@ -256,6 +279,14 @@ func runResolve(path string, out, prompts io.Writer) error {
 }
 
 func runSongWorkflow(path string, out, prompts io.Writer, planning bool) error {
+	mode := "resolve"
+	if planning {
+		mode = "plan"
+	}
+	return runWorkflow(path, out, prompts, mode)
+}
+
+func runWorkflow(path string, out, prompts io.Writer, mode string) error {
 	f, err := os.Open(path)
 	if err != nil {
 		return err
@@ -265,7 +296,7 @@ func runSongWorkflow(path string, out, prompts io.Writer, planning bool) error {
 	if err != nil {
 		return fmt.Errorf("%s: %w", path, err)
 	}
-	if len(songs) == 0 && !planning {
+	if len(songs) == 0 && mode == "resolve" {
 		return printResolutions(out, nil)
 	}
 	config, err := loadSpotifyConfig("spotify.yaml", os.Getenv)
@@ -277,12 +308,19 @@ func runSongWorkflow(path string, out, prompts io.Writer, planning bool) error {
 	authCtx, cancel := context.WithTimeout(ctx, 5*time.Minute)
 	defer cancel()
 	client := &http.Client{Timeout: requestTimeout, CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse }}
-	token, err := authenticate(authCtx, client, config.ClientID, prompts)
+	var writeScopes []string
+	if mode == "sync" {
+		writeScopes = []string{publicWriteScope, privateWriteScope}
+	}
+	token, err := authenticate(authCtx, client, config.ClientID, prompts, writeScopes...)
 	if err != nil {
 		return err
 	}
 	cancel()
-	if planning {
+	if mode == "sync" {
+		return syncSongs(ctx, client, "https://api.spotify.com/v1", token, config.PlaylistID, songs, os.Stdin, prompts, out)
+	}
+	if mode == "plan" {
 		return planSongs(ctx, client, "https://api.spotify.com/v1", token, config.PlaylistID, songs, os.Stdin, prompts, out)
 	}
 	results, err := previewSongs(ctx, client, "https://api.spotify.com/v1", token, config.PlaylistID, songs, os.Stdin, prompts)

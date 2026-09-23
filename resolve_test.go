@@ -398,3 +398,43 @@ func TestReportUnmatchedSection(t *testing.T) {
 		}
 	}
 }
+
+func TestSemicolonArtistMatching(t *testing.T) {
+	for _, tt := range []struct {
+		name, input string
+		credits     []string
+		want        bool
+	}{
+		{"multiple required", "Inferi;Trevor Strnad", []string{"Inferi", "Trevor Strnad"}, true},
+		{"reversed and normalized", " trevor STRNAD ; INFERI ", []string{"Inferi", "Trevor Strnad"}, true},
+		{"extra credits", "Inferi;Trevor Strnad", []string{"Guest", "Inferi", "Trevor Strnad"}, true},
+		{"missing credit", "Inferi;Trevor Strnad", []string{"Inferi"}, false},
+		{"single credited artist", "Trevor Strnad", []string{"Inferi", "Trevor Strnad"}, true},
+		{"literal semicolon name", "Inferi;Trevor Strnad", []string{"Inferi;Trevor Strnad"}, true},
+		{"empty component", "Inferi;;Trevor Strnad", []string{"Inferi", "Trevor Strnad"}, false},
+		{"comma unchanged", "Inferi, Trevor Strnad", []string{"Inferi", "Trevor Strnad"}, false},
+		{"ampersand unchanged", "Inferi & Trevor Strnad", []string{"Inferi", "Trevor Strnad"}, false},
+		{"feat unchanged", "Inferi feat. Trevor Strnad", []string{"Inferi", "Trevor Strnad"}, false},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			track := candidate("existing", "Behold the Bearer of Light", tt.credits...)
+			track.Type = "track"
+			song := Song{tt.input, track.Name}
+			got := matchSong(song, []searchTrack{track})
+			if (got.Status == "matched") != tt.want {
+				t.Fatalf("search result: %+v", got)
+			}
+			if (playlistChoice(song, []playlistItem{{Item: &track}}) != nil) != tt.want {
+				t.Fatal("playlist matching disagrees")
+			}
+		})
+	}
+	for _, title := range []string{"Behold the Bearer of Light - Live", "Behold the Bearer of Light!"} {
+		track := candidate("other", title, "Inferi", "Trevor Strnad")
+		track.Type = "track"
+		song := Song{"Inferi;Trevor Strnad", "Behold the Bearer of Light"}
+		if matchSong(song, []searchTrack{track}).Status != "unmatched" || playlistChoice(song, []playlistItem{{Item: &track}}) != nil {
+			t.Fatal("title matching relaxed")
+		}
+	}
+}

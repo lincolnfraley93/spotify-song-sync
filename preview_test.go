@@ -243,3 +243,41 @@ func TestPlaylistUnusableEntries(t *testing.T) {
 		}
 	}
 }
+
+type forbiddenInput struct{ t *testing.T }
+
+func (r forbiddenInput) Read(p []byte) (int, error) {
+	r.t.Error("unexpected resolution input read")
+	return 0, io.EOF
+}
+
+func TestPlaylistSemicolonArtistsNeverSearchOrPrompt(t *testing.T) {
+	searches := 0
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/playlists/list/items" {
+			searches++
+			t.Error("unexpected search request")
+			w.WriteHeader(500)
+			return
+		}
+		io.WriteString(w, `{"items":[{"item":{"id":"existing-inferi","type":"track","name":"Behold the Bearer of Light","artists":[{"name":"Inferi"},{"name":"Trevor Strnad"}]}},{"item":{"id":"another-release","type":"track","name":"Behold the Bearer of Light","artists":[{"name":"Inferi"},{"name":"Trevor Strnad"}]}}],"next":null}`)
+	}))
+	defer server.Close()
+	songs, err := parseSongs(strings.NewReader("- artist: Inferi;Trevor Strnad\n  title: Behold the Bearer of Light\n- artist: Inferi;Trevor Strnad\n  title: Behold the Bearer of Light\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var prompts bytes.Buffer
+	results, err := previewSongs(context.Background(), server.Client(), server.URL, "token", "list", songs, forbiddenInput{t}, &prompts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(results) != 2 || searches != 0 || prompts.Len() != 0 {
+		t.Fatalf("results=%v searches=%d prompts=%q", results, searches, prompts.String())
+	}
+	for i, result := range results {
+		if result.Selected == nil || result.Selected.ID != "existing-inferi" || result.Source != "playlist" || result.Song != songs[i] {
+			t.Fatalf("%+v", result)
+		}
+	}
+}

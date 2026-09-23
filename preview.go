@@ -16,10 +16,8 @@ func playlistChoice(song Song, items []playlistItem) *searchTrack {
 		if item.IsLocal || track == nil || track.IsLocal || track.Type != "track" || track.ID == "" || !sameText(song.Title, track.Name) {
 			continue
 		}
-		for _, artist := range track.Artists {
-			if sameText(song.Artist, artist.Name) {
-				return track
-			}
+		if artistMatches(song.Artist, *track) {
+			return track
 		}
 	}
 	return nil
@@ -114,11 +112,28 @@ func previewSongs(ctx context.Context, client *http.Client, base, token, playlis
 	return resolveAgainstPlaylist(ctx, client, base, token, songs, items, input, prompts)
 }
 
+// promptInput owns the one scanner shared by selection and final confirmation.
+// It starts lazily, so noninteractive workflows do not consume stdin.
+type promptInput struct {
+	ctx    context.Context
+	reader io.Reader
+	lines  <-chan string
+}
+
+func (p *promptInput) channel() <-chan string {
+	if p.lines == nil {
+		p.lines = promptLines(p.ctx, p.reader)
+	}
+	return p.lines
+}
+
 func resolveAgainstPlaylist(ctx context.Context, client *http.Client, base, token string, songs []Song, items []playlistItem, input io.Reader, prompts io.Writer) ([]resolution, error) {
-	// Start reading input only if a song actually needs a choice.
 	promptCtx, cancel := context.WithCancel(ctx)
 	defer cancel()
-	var lines <-chan string
+	return resolveWithInput(ctx, client, base, token, songs, items, &promptInput{ctx: promptCtx, reader: input}, prompts)
+}
+
+func resolveWithInput(ctx context.Context, client *http.Client, base, token string, songs []Song, items []playlistItem, input *promptInput, prompts io.Writer) ([]resolution, error) {
 	var results []resolution
 	// Preserve Unicode EqualFold behavior by comparing the small in-memory list.
 	for i, song := range songs {
@@ -167,10 +182,7 @@ func resolveAgainstPlaylist(ctx context.Context, client *http.Client, base, toke
 				result.Candidates = choices
 			}
 			if len(choices) > 0 {
-				if lines == nil {
-					lines = promptLines(promptCtx, input)
-				}
-				selected, err := chooseTrack(ctx, lines, prompts, song, choices)
+				selected, err := chooseTrack(ctx, input.channel(), prompts, song, choices)
 				if err != nil {
 					return nil, fmt.Errorf("song %d: %w", i+1, err)
 				}

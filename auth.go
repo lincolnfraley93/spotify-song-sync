@@ -44,9 +44,13 @@ func randomToken() (string, error) {
 	return base64.RawURLEncoding.EncodeToString(b), nil
 }
 
-func authorizationURL(endpoint, clientID, redirect, state, verifier string) string {
+const readScope = "playlist-read-private"
+const publicWriteScope = "playlist-modify-public"
+const privateWriteScope = "playlist-modify-private"
+
+func authorizationURL(endpoint, clientID, redirect, state, verifier string, writeScopes ...string) string {
 	sum := sha256.Sum256([]byte(verifier))
-	q := url.Values{"client_id": {clientID}, "response_type": {"code"}, "redirect_uri": {redirect}, "scope": {"playlist-read-private"}, "state": {state}, "code_challenge_method": {"S256"}, "code_challenge": {base64.RawURLEncoding.EncodeToString(sum[:])}}
+	q := url.Values{"client_id": {clientID}, "response_type": {"code"}, "redirect_uri": {redirect}, "scope": {strings.Join(append([]string{readScope}, writeScopes...), " ")}, "state": {state}, "code_challenge_method": {"S256"}, "code_challenge": {base64.RawURLEncoding.EncodeToString(sum[:])}}
 	return endpoint + "?" + q.Encode()
 }
 
@@ -88,7 +92,7 @@ func callbackHandler(state string, results chan<- authResult) http.Handler {
 	})
 }
 
-func authenticate(ctx context.Context, client *http.Client, clientID string, prompts io.Writer) (string, error) {
+func authenticate(ctx context.Context, client *http.Client, clientID string, prompts io.Writer, writeScopes ...string) (string, error) {
 	state, err := randomToken()
 	if err != nil {
 		return "", err
@@ -106,7 +110,7 @@ func authenticate(ctx context.Context, client *http.Client, clientID string, pro
 	defer server.Close()
 	failures := make(chan error, 1)
 	go func() { failures <- server.Serve(listener) }()
-	address := authorizationURL(authorizeURL, clientID, redirectURI, state, verifier)
+	address := authorizationURL(authorizeURL, clientID, redirectURI, state, verifier, writeScopes...)
 	if _, err := fmt.Fprintf(prompts, "Opening Spotify in your browser. If it doesn't open, use this URL:\n%s\n", address); err != nil {
 		return "", err
 	}

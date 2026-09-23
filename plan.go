@@ -101,8 +101,12 @@ func planTrackLabel(track searchTrack) string {
 }
 
 func printPlan(out io.Writer, plan syncPlan) error {
+	return printPlanWithHeading(out, plan, "DRY RUN — NO PLAYLIST CHANGES")
+}
+
+func printPlanWithHeading(out io.Writer, plan syncPlan, heading string) error {
 	var report strings.Builder
-	fmt.Fprintln(&report, "DRY RUN — NO PLAYLIST CHANGES")
+	fmt.Fprintln(&report, heading)
 	fmt.Fprintln(&report, "============================")
 	fmt.Fprintln(&report, "\nPositions start at 1. Each step uses the playlist after earlier steps.")
 	counts := make(map[string]int)
@@ -143,16 +147,31 @@ func planSongs(ctx context.Context, client *http.Client, base, token, playlistID
 	if err != nil {
 		return err
 	}
+	promptCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	prepared, err := preparePlan(ctx, client, base, token, songs, items, &promptInput{ctx: promptCtx, reader: input}, prompts, out)
+	if err != nil {
+		return err
+	}
+	return printPlan(out, prepared.Plan)
+}
+
+type preparedPlan struct {
+	Current, Desired []searchTrack
+	Plan             syncPlan
+}
+
+func preparePlan(ctx context.Context, client *http.Client, base, token string, songs []Song, items []playlistItem, input *promptInput, prompts, out io.Writer) (preparedPlan, error) {
 	current := make([]searchTrack, 0, len(items))
 	for i, item := range items {
 		if item.IsLocal || item.Item == nil || item.Item.IsLocal || item.Item.Type != "track" || item.Item.ID == "" {
-			return fmt.Errorf("plan incomplete: unsupported playlist entry at position %d (local, non-track, unavailable, or missing ID); no change plan generated", i+1)
+			return preparedPlan{}, fmt.Errorf("plan incomplete: unsupported playlist entry at position %d (local, non-track, unavailable, or missing ID); no change plan generated", i+1)
 		}
 		current = append(current, *item.Item)
 	}
-	results, err := resolveAgainstPlaylist(ctx, client, base, token, songs, items, input, prompts)
+	results, err := resolveWithInput(ctx, client, base, token, songs, items, input, prompts)
 	if err != nil {
-		return err
+		return preparedPlan{}, err
 	}
 	desired := make([]searchTrack, 0, len(results))
 	var unresolved strings.Builder
@@ -165,13 +184,13 @@ func planSongs(ctx context.Context, client *http.Client, base, token, playlistID
 	}
 	if unresolved.Len() > 0 {
 		if _, err := fmt.Fprintf(out, "UNRESOLVED SONGS — PLAN INCOMPLETE\n%s", unresolved.String()); err != nil {
-			return err
+			return preparedPlan{}, err
 		}
-		return fmt.Errorf("plan incomplete—no change plan generated; resolve every input song first")
+		return preparedPlan{}, fmt.Errorf("plan incomplete—no change plan generated; resolve every input song first")
 	}
 	plan, err := buildPlan(current, desired)
 	if err != nil {
-		return err
+		return preparedPlan{}, err
 	}
-	return printPlan(out, plan)
+	return preparedPlan{Current: current, Desired: desired, Plan: plan}, nil
 }
